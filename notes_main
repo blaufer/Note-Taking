@@ -1,0 +1,78 @@
+#! /usr/bin/env python3
+
+import os,sys
+import fnmatch
+from color import *
+from options import *
+
+#----------------------------------------------------------
+
+def run_program():
+    # Enter Program
+    clear_screen()
+    
+    notes_dir = create_dir()
+
+    while True:
+        title_options()
+
+        key_press = input('Choose an option: ').lower()
+
+        if key_press == 'l':
+            current_notes(notes_dir)            
+        elif key_press == 'n':
+            try:
+                isinstance(n,str)
+                save_note(n_list, n_file)
+            except:
+                pass
+            n, n_list, n_file = note(notes_dir)
+        elif key_press == 'p':
+            try:
+                isinstance(n,str)
+                print_note(n, n_list)
+            except:
+                no_note()
+        elif key_press == 'a':
+            try:
+                isinstance(n,str)
+                n_list = add_entry(n_list)
+            except:
+                no_note()
+        elif key_press == 'd':
+            try:
+                isinstance(n,str)
+                n_list = delete_entry(n_list)
+            except:
+                no_note()
+        elif key_press == 'r':
+            try:
+                isinstance(n,str)
+                n_list = reorder_note(n_list)
+            except:
+                no_note()
+        elif key_press == 's':
+            try:
+                isinstance(n,str)
+                save_note(n_list, n_file)
+            except:
+                pass 
+        elif key_press == 'x':
+            try:
+                isinstance(n,str)
+                save_note(n_list, n_file)
+            except:
+                pass
+            clear_screen()
+            sys.exit(1) 
+        elif key_press == 'h':
+            clear_screen()
+            help_info()
+            clear_screen()
+            pass
+        else:
+            color.red('\nUnrecognized entry!')
+
+#----------------------------------------------------------
+
+run_program()
